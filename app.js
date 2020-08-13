@@ -9,7 +9,7 @@ var express = require("express"),
     LocalStrategy = require("passport-local"),
     Campground = require("./models/campground"),
     User = require("./models/user"),
-    seedDB = require("./seeds"),
+    // seedDB = require("./seeds"),
     Comment = require("./models/comment"),
     app = express();
 
