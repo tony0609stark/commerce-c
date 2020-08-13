@@ -19,7 +19,7 @@ var commentRoutes = require("./routes/comments"),
 
 // seedDB();
 // connect to database
-mongoose.connect("mongodb+srv://sahil:12345@yelpcampv2.qodd3.mongodb.net/yelpcampv2?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://sahil:sahil@yelpcampv2.qodd3.mongodb.net/yelpcampv2?retryWrites=true&w=majority");
 // mongodb+srv://sahil:sahil99@yelpcamp.feixq.mongodb.net/<yelpcamp>?retryWrites=true&w=majority
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
