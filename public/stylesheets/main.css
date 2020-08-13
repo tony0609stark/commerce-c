@@ -8,6 +8,7 @@ body{
 
 .thumbnail img {
   width: 100%;
+  margin: 0px;
 }
 
 .thumbnail {
@@ -32,6 +33,10 @@ body{
 
 #landing-header h1 {
   color: #fff;
+}
+
+.thumbnail h4{
+  display: inline;
 }
 /*
 .slideshow {
