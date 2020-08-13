@@ -38,6 +38,10 @@ body{
 .thumbnail h4{
   display: inline;
 }
+#right {
+  display: inline;
+  text-align: right;
+}
 /*
 .slideshow {
   position: fixed;
