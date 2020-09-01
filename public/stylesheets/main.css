@@ -43,6 +43,11 @@ body{
   display: inline;
   text-align: right;
 }
+
+#showimg{
+  height: 600px;
+  width: 80%;
+}
 /*
 .slideshow {
   position: fixed;
