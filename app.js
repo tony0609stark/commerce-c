@@ -7,15 +7,11 @@ var express = require("express"),
     passport = require("passport"),
     methodoverride = require("method-override"),
     LocalStrategy = require("passport-local"),
-    Campground = require("./models/campground"),
     User = require("./models/user"),
     // seedDB = require("./seeds"),
-    Comment = require("./models/comment"),
     app = express();
 
-var commentRoutes = require("./routes/comments"),
-    campgroundRoutes = require("./routes/campgrounds"),
-    authRoutes = require("./routes/auth");
+var authRoutes = require("./routes/auth");
 
 // seedDB();
 // connect to database
@@ -51,12 +47,6 @@ app.use(flash());
 //     }
 //   });
 
-var campgrounds = [
-  {name: "Sahil", image:"https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"},
-  {name: "Camp Green Lake", image:"https://images.unsplash.com/photo-1487750404521-0bc4682c48c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"},
-  {name: "Camp Chika", image:"https://images.unsplash.com/photo-1571687949921-1306bfb24b72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"}
-];
-
 app.use(require("express-session")({
   secret:"Anime is life",
   resave: false,
@@ -78,9 +68,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(authRoutes);
-app.use("/campgrounds",campgroundRoutes);
-app.use("/campgrounds/:id/comments",commentRoutes);
+// app.use("/campgrounds",campgroundRoutes);
+// app.use("/campgrounds/:id/comments",commentRoutes);
 
 app.listen(process.env.PORT||3000,process.env.IP,function(){
- console.log('yelpcamp has started')
+ console.log('CovidApp has started')
 });

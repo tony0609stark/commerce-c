@@ -4,24 +4,25 @@ var passport = require("passport");
 var User = require("../models/user");
 
 router.get("/",function(req,res){
-  res.render("landing", {currentuser: req.user});
+  res.render("home", {currentuser: req.user});
 });
 //AUTH ROUTES
 //=======================
 router.get("/register", function(req,res){
-  res.render("register");
+  res.render("sign_up");
 });
 
 router.post("/register", function(req,res){
+  console.log(req.body.username)
   var newUser = ({username:req.body.username});
   User.register(newUser, req.body.password, function(err, user){
     if(err){
         req.flash("error", err);
-        return res.render("register");
+        return res.render("sign_up");
     }
     passport.authenticate("local")(req,res, function(){
-      req.flash("success", "Welcome to YelpCamp" + user.username);
-      res.redirect("/campgrounds");
+      req.flash("success", "Welcome" + user.username);
+      res.redirect("/");
     });
   });
 });
@@ -29,13 +30,14 @@ router.post("/register", function(req,res){
 //show login form
 
 router.get("/login", function(req, res){
-  res.render("login");
+  res.render("log_in");
 });
 
 router.post("/login", passport.authenticate("local",
  {
-   successRedirect: "/campgrounds",
-   failureRedirect: "/login"}),
+   successRedirect: "/",
+   failureRedirect: "/login",
+   failureFlash: true }),
    function(req, res){
 });
 
@@ -43,8 +45,15 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
   req.logout();
   req.flash("success", "logged you out!");
-  res.redirect("/campgrounds");
+  res.redirect("/");
 });
+
+
+// Product details
+router.get('/product', function(req, res){
+  res.render("product")
+})
+
 
 
 
